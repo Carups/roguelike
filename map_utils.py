@@ -4,7 +4,10 @@ from entity import Entity
 from components.ai import BasicMonster
 from components.fighter import Fighter
 from render_functions import  RenderOrder
-from components.item import  HealPotion
+from components.item import  HealPotion, Armor, Sword
+"""
+File contains some tools that are created the all map
+"""
 
 class GameMap(Map):
     def __init__(self, width, height):
@@ -33,7 +36,7 @@ class Rect:
 def place_entities(room, entities, max_monsters_per_room, colors):
     # Get a random number of monsters
     number_of_monsters = randint(0, max_monsters_per_room)
-    number_of_items = randint(0, 2)
+    number_of_items = randint(0, 4)
 
     for i in range(number_of_monsters):
         # Choose a random location in the room
@@ -60,9 +63,10 @@ def place_entities(room, entities, max_monsters_per_room, colors):
         y = randint(room.y1 + 1, room.y2 - 1)
 
         if not any([entity for entity in entities if entity.x == x and entity.y == y]):
-            item_component = HealPotion()
+            posible_class = [HealPotion, Armor, Sword]
+            item_component = posible_class[randint(0, 2)]()
 
-            item = Entity(x, y, '!', colors.get('violet'), 'Healing Potion', render_order=RenderOrder.ITEM,
+            item = Entity(x, y, item_component.short, colors.get('violet'), item_component.__class__.__name__, render_order=RenderOrder.ITEM,
                           item=item_component)
 
             entities.append(item)

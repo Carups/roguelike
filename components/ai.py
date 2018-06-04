@@ -1,4 +1,7 @@
 class BasicMonster:
+    """
+    Emulation of monster activity
+    """
     def take_turn(self, target, game_map, entities):
         results = []
 

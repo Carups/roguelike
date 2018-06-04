@@ -4,6 +4,11 @@ from game_messages import Message
 
 
 def kill_player(player, colors):
+    """
+    :param player: main entity for player
+    :param colors: colors for players corpse
+    :return: Message about players death and new GameStatus
+    """
     player.char = '%'
     player.color = colors.get('dark_red')
 
@@ -11,6 +16,11 @@ def kill_player(player, colors):
 
 
 def kill_monster(monster, colors):
+    """
+    :param monster: entity for mob
+    :param colors: colors for mob corpse
+    :return: Message about mob death
+    """
     death_message = Message('{0} is dead!'.format(monster.name.capitalize()), colors.get('orange'))
 
     monster.char = '%'

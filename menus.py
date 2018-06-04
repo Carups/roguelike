@@ -4,6 +4,9 @@ import textwrap
 
 
 def menu(con, root, header, options, width, screen_width, screen_height):
+    """
+    Emulate interface for interactions player-inventory
+    """
     if len(options) > 26: raise ValueError('Cannot have a menu with more than 26 options.')
 
     # calculate total height for the header (after textwrap) and one line per option

@@ -2,12 +2,18 @@ import textwrap
 
 
 class Message:
+    """
+    Basic unit for interaction and log
+    """
     def __init__(self, text, color=(255, 255, 255)):
         self.text = text
         self.color = color
 
 
 class MessageLog:
+    """
+    Contains message. Show all logs
+    """
     def __init__(self, x, width, height):
         self.messages = []
         self.x = x
